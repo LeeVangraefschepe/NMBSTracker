@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -94,12 +95,7 @@ namespace NMBSTracker
 
         private Task<int> RefreshAPITask()
         {
-            if (FromStation.Text == _default) return Task.FromResult(0);
-            if (ToStation.Text == _default) return Task.FromResult(0);
-            if (ToStation.SelectedText != string.Empty)
-            {
-                return Task.FromResult(0);
-            }
+            if (FromStation.Text == _default || ToStation.Text == _default) return Task.FromResult(0);
 
             XmlDocument document = new XmlDocument();
             try
@@ -177,8 +173,18 @@ namespace NMBSTracker
 
         private void LoadSettings()
         {
+            if (!File.Exists("settings.xml")) return;
+
             XmlDocument document = new XmlDocument();
-            document.Load("settings.xml");
+            try
+            {
+                document.Load("settings.xml");
+            }
+            catch
+            {
+                MessageBox.Show("Failed to load settings file.", "NMBSTracker");
+                return;
+            }
 
             XmlNode root = document.DocumentElement;
             string fromStation = root.SelectSingleNode("FromStation").InnerText;
