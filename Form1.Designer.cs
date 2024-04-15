@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnReset = new System.Windows.Forms.Button();
+            this.LblVersion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // FromStation
@@ -152,11 +153,22 @@
             this.BtnReset.UseVisualStyleBackColor = true;
             this.BtnReset.Click += new System.EventHandler(this.BtnReset_Click);
             // 
+            // LblVersion
+            // 
+            this.LblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblVersion.Location = new System.Drawing.Point(-3, 1);
+            this.LblVersion.Name = "LblVersion";
+            this.LblVersion.Size = new System.Drawing.Size(230, 18);
+            this.LblVersion.TabIndex = 10;
+            this.LblVersion.Text = "V1.0.0.0";
+            this.LblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(225, 171);
+            this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.BtnReset);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.label4);
@@ -192,6 +204,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.Button BtnReset;
+        private System.Windows.Forms.Label LblVersion;
     }
 }
 

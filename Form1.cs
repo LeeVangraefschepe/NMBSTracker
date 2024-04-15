@@ -16,6 +16,9 @@ namespace NMBSTracker
         {
             InitializeComponent();
 
+            // Apply version text
+            LblVersion.Text = $"V{Application.ProductVersion}";
+
             // Initialize stations
             WebClient client = new WebClient();
             string webStations = client.DownloadString("https://api.irail.be/stations/");
