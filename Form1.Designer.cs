@@ -43,6 +43,8 @@
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnReset = new System.Windows.Forms.Button();
             this.LblVersion = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Intervals = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // FromStation
@@ -135,7 +137,7 @@
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(22, 104);
+            this.BtnSave.Location = new System.Drawing.Point(22, 132);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(174, 23);
             this.BtnSave.TabIndex = 8;
@@ -145,7 +147,7 @@
             // 
             // BtnReset
             // 
-            this.BtnReset.Location = new System.Drawing.Point(22, 130);
+            this.BtnReset.Location = new System.Drawing.Point(22, 158);
             this.BtnReset.Name = "BtnReset";
             this.BtnReset.Size = new System.Drawing.Size(174, 23);
             this.BtnReset.TabIndex = 9;
@@ -163,11 +165,33 @@
             this.LblVersion.Text = "V1.0.0.0";
             this.LblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(10, 102);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 18);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Interval:";
+            // 
+            // Intervals
+            // 
+            this.Intervals.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Intervals.FormattingEnabled = true;
+            this.Intervals.Location = new System.Drawing.Point(75, 101);
+            this.Intervals.Name = "Intervals";
+            this.Intervals.Size = new System.Drawing.Size(121, 21);
+            this.Intervals.TabIndex = 12;
+            this.Intervals.SelectedIndexChanged += new System.EventHandler(this.Intervals_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(225, 171);
+            this.ClientSize = new System.Drawing.Size(225, 195);
+            this.Controls.Add(this.Intervals);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.BtnReset);
             this.Controls.Add(this.BtnSave);
@@ -205,6 +229,8 @@
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.Button BtnReset;
         private System.Windows.Forms.Label LblVersion;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox Intervals;
     }
 }
 

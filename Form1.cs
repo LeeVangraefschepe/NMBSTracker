@@ -51,11 +51,20 @@ namespace NMBSTracker
                 hours.Add(i.ToString("00"));
             }
 
+            // Initialize interval dropdown
+            List<string> intervals = new List<string>
+            {
+                "1 minute",
+                "3 minutes",
+                "5 minutes"
+            };
+
             // Apply to form elements
             FromStation.DataSource = stations.ToArray();
             ToStation.DataSource = stations.ToArray();
             DepartMinute.DataSource = minutes;
             DepartHour.DataSource = hours;
+            Intervals.DataSource = intervals;
 
             LoadSettings();
         }
@@ -174,6 +183,10 @@ namespace NMBSTracker
             element.InnerText = DepartMinute.Text;
             root.AppendChild(element);
 
+            element = document.CreateElement("Interval");
+            element.InnerText = Intervals.Text;
+            root.AppendChild(element);
+
             document.AppendChild(root);
             document.Save("settings.xml");
         }
@@ -194,15 +207,17 @@ namespace NMBSTracker
             }
 
             XmlNode root = document.DocumentElement;
-            string fromStation = root.SelectSingleNode("FromStation").InnerText;
-            string toStation = root.SelectSingleNode("ToStation").InnerText;
-            string departHour = root.SelectSingleNode("DepartHour").InnerText;
-            string departMinute = root.SelectSingleNode("DepartMinute").InnerText;
+            string fromStation = root.SelectSingleNode("FromStation")?.InnerText;
+            string toStation = root.SelectSingleNode("ToStation")?.InnerText;
+            string departHour = root.SelectSingleNode("DepartHour")?.InnerText;
+            string departMinute = root.SelectSingleNode("DepartMinute")?.InnerText;
+            string interval = root.SelectSingleNode("Interval")?.InnerText;
 
-            FromStation.SelectedItem = fromStation;
-            ToStation.SelectedItem = toStation;
-            DepartHour.SelectedItem = departHour;
-            DepartMinute.SelectedItem = departMinute;
+            if (fromStation != null) FromStation.SelectedItem = fromStation;
+            if (toStation != null) ToStation.SelectedItem = toStation;
+            if (departHour != null) DepartHour.SelectedItem = departHour;
+            if (departMinute != null) DepartMinute.SelectedItem = departMinute;
+            if (interval != null) Intervals.SelectedItem = interval;
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
@@ -211,6 +226,19 @@ namespace NMBSTracker
             _lastDelay = -1;
             RefreshAPI(false);
             UpdateTimer.Start();
+        }
+
+        private void Intervals_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string strNumber = Intervals.Text.Replace(" minutes", "").Replace(" minute", "");
+            if (int.TryParse(strNumber, out int output))
+            {
+                UpdateTimer.Interval = output * 60000;
+            }
+            else
+            {
+                MessageBox.Show("Failed to parse interval text");
+            }
         }
     }
 }
