@@ -77,14 +77,18 @@ namespace NMBSTracker
             }
         }
 
-        private void RefreshAPI()
+        private void RefreshAPI(bool checkRange = true)
         {
-            // Stop API calls if 3H or more from train department
-            DateTime now = DateTime.Now;
-            DateTime customDateTime = new DateTime(now.Year, now.Month, now.Day, Convert.ToInt32(DepartHour.Text), Convert.ToInt32(DepartMinute.Text), 0);
-            if ((now - customDateTime).TotalHours <= 3)
+            if (checkRange)
             {
-                return;
+                // Stop API calls if 3H or more from train department
+                DateTime now = DateTime.Now;
+                DateTime customDateTime = new DateTime(now.Year, now.Month, now.Day, Convert.ToInt32(DepartHour.Text), Convert.ToInt32(DepartMinute.Text), 0);
+
+                if (Math.Abs((now - customDateTime).TotalHours) >= 3)
+                {
+                    return;
+                }
             }
 
             // Call API async
@@ -205,7 +209,7 @@ namespace NMBSTracker
         {
             UpdateTimer.Stop();
             _lastDelay = -1;
-            RefreshAPI();
+            RefreshAPI(false);
             UpdateTimer.Start();
         }
     }
