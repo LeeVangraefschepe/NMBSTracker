@@ -76,15 +76,27 @@ namespace NMBSTracker
 
         private void HandleDelay(int delay)
         {
-            if (_lastDelay != delay)
+            if (_lastDelay == delay) return;
+
+            DelayNotification.Text = GetDelayText(delay);
+            if (_lastDelay == -1)
             {
-                DelayNotification.Text = GetDelayText(delay);
-                DelayNotification.Visible = true;
                 DelayNotification.BalloonTipTitle = "Update";
-                DelayNotification.BalloonTipText = DelayNotification.Text;
-                DelayNotification.ShowBalloonTip(100);
-                _lastDelay = delay;
             }
+            else if (_lastDelay < delay)
+            {
+                DelayNotification.BalloonTipTitle = "Delay increase";
+            }
+            else
+            {
+                DelayNotification.BalloonTipTitle = "Delay decrease";
+                DelayNotification.Text += $" Was {_lastDelay} minute(s) before.";
+            }
+
+            DelayNotification.Visible = true;
+            DelayNotification.BalloonTipText = DelayNotification.Text;
+            DelayNotification.ShowBalloonTip(100);
+            _lastDelay = delay;
         }
 
         private void RefreshAPI(bool checkRange = true)
