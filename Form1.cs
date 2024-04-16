@@ -76,9 +76,13 @@ namespace NMBSTracker
 
         private void HandleDelay(int delay)
         {
+            // Only notify when delay changed
             if (_lastDelay == delay) return;
 
+            // Set default text
             DelayNotification.Text = GetDelayText(delay);
+
+            // Adjust notification based on last & current delay
             if (_lastDelay == -1)
             {
                 DelayNotification.BalloonTipTitle = "Update";
@@ -93,9 +97,12 @@ namespace NMBSTracker
                 DelayNotification.Text += $" Was {_lastDelay} minute(s) before.";
             }
 
+            // Push notification
             DelayNotification.Visible = true;
             DelayNotification.BalloonTipText = DelayNotification.Text;
             DelayNotification.ShowBalloonTip(100);
+
+            // Update new delay
             _lastDelay = delay;
         }
 

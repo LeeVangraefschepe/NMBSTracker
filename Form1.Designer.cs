@@ -49,7 +49,10 @@
             // 
             // FromStation
             // 
+            this.FromStation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.FromStation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FromStation.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.FromStation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.FromStation.FormattingEnabled = true;
             this.FromStation.Location = new System.Drawing.Point(75, 17);
             this.FromStation.Name = "FromStation";
@@ -58,7 +61,10 @@
             // 
             // ToStation
             // 
+            this.ToStation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.ToStation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ToStation.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ToStation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.ToStation.FormattingEnabled = true;
             this.ToStation.Location = new System.Drawing.Point(75, 44);
             this.ToStation.Name = "ToStation";
@@ -67,7 +73,10 @@
             // 
             // DepartHour
             // 
+            this.DepartHour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.DepartHour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DepartHour.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DepartHour.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.DepartHour.FormattingEnabled = true;
             this.DepartHour.Location = new System.Drawing.Point(75, 74);
             this.DepartHour.Name = "DepartHour";
@@ -76,7 +85,10 @@
             // 
             // DepartMinute
             // 
+            this.DepartMinute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.DepartMinute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DepartMinute.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DepartMinute.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.DepartMinute.FormattingEnabled = true;
             this.DepartMinute.Location = new System.Drawing.Point(146, 74);
             this.DepartMinute.Name = "DepartMinute";
@@ -99,6 +111,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.label1.Location = new System.Drawing.Point(23, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 18);
@@ -109,6 +122,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.label2.Location = new System.Drawing.Point(39, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 18);
@@ -119,6 +133,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.label3.Location = new System.Drawing.Point(130, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(12, 18);
@@ -129,6 +144,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.label4.Location = new System.Drawing.Point(23, 73);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 18);
@@ -137,6 +153,9 @@
             // 
             // BtnSave
             // 
+            this.BtnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.BtnSave.Location = new System.Drawing.Point(22, 132);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(174, 23);
@@ -147,6 +166,9 @@
             // 
             // BtnReset
             // 
+            this.BtnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.BtnReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.BtnReset.Location = new System.Drawing.Point(22, 158);
             this.BtnReset.Name = "BtnReset";
             this.BtnReset.Size = new System.Drawing.Size(174, 23);
@@ -158,6 +180,7 @@
             // LblVersion
             // 
             this.LblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.LblVersion.Location = new System.Drawing.Point(-3, 1);
             this.LblVersion.Name = "LblVersion";
             this.LblVersion.Size = new System.Drawing.Size(230, 18);
@@ -169,6 +192,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.label5.Location = new System.Drawing.Point(10, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 18);
@@ -177,7 +201,11 @@
             // 
             // Intervals
             // 
+            this.Intervals.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.Intervals.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.Intervals.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Intervals.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Intervals.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Intervals.FormattingEnabled = true;
             this.Intervals.Location = new System.Drawing.Point(75, 101);
             this.Intervals.Name = "Intervals";
@@ -189,6 +217,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(225, 195);
             this.Controls.Add(this.Intervals);
             this.Controls.Add(this.label5);
