@@ -83,6 +83,7 @@ namespace NMBSTracker
                 DelayNotification.BalloonTipTitle = "Update";
                 DelayNotification.BalloonTipText = DelayNotification.Text;
                 DelayNotification.ShowBalloonTip(100);
+                _lastDelay = delay;
             }
         }
 
