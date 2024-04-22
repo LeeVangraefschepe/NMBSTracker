@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -21,6 +23,18 @@ namespace NMBSTracker
 
             // Apply version text
             LblVersion.Text = $"V{Application.ProductVersion}";
+
+            // Check version
+            if (!VersionChecker.IsLatest())
+            {
+                DialogResult result = MessageBox.Show("Do you want to update now?", "Update available", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Process.Start("https://github.com/LeeVangraefschepe/NMBSTracker/releases");
+                    Environment.Exit(0);
+                    return;
+                }
+            }
 
             // Initialize stations
             WebClient client = new WebClient();
