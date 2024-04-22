@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using Newtonsoft.Json;
 using System.Windows.Forms;
 
 namespace NMBSTracker
@@ -20,9 +19,12 @@ namespace NMBSTracker
             client.Headers.Add("User-Agent", "C# HttpClient");
             string githubJson = client.DownloadString(_githubUrl);
 
-            dynamic jsonObj = JsonConvert.DeserializeObject(githubJson);
+            int tagIndex = githubJson.IndexOf("\"tag_name\"");
+            int quoteIndex = githubJson.IndexOf('"', tagIndex + "\"tag_name\"".Length + 1);
+            int endQuoteIndex = githubJson.IndexOf('"', quoteIndex + 1);
+            string tagName = githubJson.Substring(quoteIndex + 1, endQuoteIndex - quoteIndex - 1);
 
-            return jsonObj.tag_name;
+            return tagName;
         }
     }
 }
