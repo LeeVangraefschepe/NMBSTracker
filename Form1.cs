@@ -12,6 +12,9 @@ namespace NMBSTracker
     {
         private int _lastDelay = -1;
         private string _default = "None";
+        private Station _from = new Station();
+        private Station _to = new Station();
+
         public Form1()
         {
             InitializeComponent();
@@ -120,18 +123,18 @@ namespace NMBSTracker
                 }
             }
 
-            // Call API async
-            Task<int> refreshTask = RefreshAPITask();
-            refreshTask.ContinueWith(task =>
-            {
-                int delay = task.Result;
-                HandleDelay(delay);
-            });
+            // Call API
+            int delay = RefreshAPITask();
+            LblTrainFrom.Text = $"{_from.Name}\n";
+            LblTrainFrom.Text += $"{_from.ArrivalTime.ToString("HH:mm")}";
+            LblTrainTo.Text = $"{_to.Name}\n";
+            LblTrainTo.Text += $"{_to.ArrivalTime.ToString("HH:mm")}";
+            HandleDelay(delay);
         }
 
-        private Task<int> RefreshAPITask()
+        private int RefreshAPITask()
         {
-            if (FromStation.Text == _default || ToStation.Text == _default) return Task.FromResult(0);
+            if (FromStation.Text == _default || ToStation.Text == _default) return 0;
 
             XmlDocument document = new XmlDocument();
             try
@@ -148,20 +151,34 @@ namespace NMBSTracker
                 DelayNotification.BalloonTipTitle = "Error";
                 DelayNotification.BalloonTipText = DelayNotification.Text;
                 DelayNotification.ShowBalloonTip(100);
-                return Task.FromResult(0);
+                return 0;
             }
 
-            XmlNodeList xmlRoutes = document.GetElementsByTagName("departure");
+            XmlNodeList xmlConnections = document.GetElementsByTagName("connection");
             int intDelay = 0;
-            foreach (XmlNode xmlRoute in xmlRoutes)
+            foreach (XmlNode xmlConnection in xmlConnections)
             {
-                string delay = xmlRoute.Attributes["delay"].InnerText;
+                XmlNode xmlDepart = xmlConnection.SelectSingleNode("departure");
+                XmlNode xmlArrive = xmlConnection.SelectSingleNode("arrival");
+
+                string delay = xmlDepart.Attributes["delay"].InnerText;
                 int.TryParse(delay, out intDelay);
                 intDelay /= 60;
+
+                XmlNode stationNode = xmlDepart.SelectSingleNode("station");
+                _from.Name = stationNode.InnerText;
+                XmlNode timeNode = xmlDepart.SelectSingleNode("time");
+                _from.ArrivalTime = DateTime.ParseExact(timeNode.Attributes["formatted"].Value, "yyyy-MM-ddTHH:mm:ss", null);
+
+                stationNode = xmlArrive.SelectSingleNode("station");
+                _to.Name = stationNode.InnerText;
+                timeNode = xmlArrive.SelectSingleNode("time");
+                _to.ArrivalTime = DateTime.ParseExact(timeNode.Attributes["formatted"].Value, "yyyy-MM-ddTHH:mm:ss", null);
+
                 break;
             }
 
-            return Task.FromResult(intDelay);
+            return intDelay;
         }
 
         private string GetDelayText(int delay)
