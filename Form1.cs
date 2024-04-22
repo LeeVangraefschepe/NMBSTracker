@@ -14,6 +14,7 @@ namespace NMBSTracker
     {
         private int _lastDelay = -1;
         private string _default = "None";
+        private bool _canceled = false;
         private Station _from = new Station();
         private Station _to = new Station();
 
@@ -143,6 +144,17 @@ namespace NMBSTracker
             LblTrainFrom.Text += $"{_from.ArrivalTime.ToString("HH:mm")}";
             LblTrainTo.Text = $"{_to.Name}\n";
             LblTrainTo.Text += $"{_to.ArrivalTime.ToString("HH:mm")}";
+
+            if (_canceled)
+            {
+                DelayNotification.Text = $"Your train is canceled. This message will keep appearing.";
+                DelayNotification.Visible = true;
+                DelayNotification.BalloonTipTitle = "Warning";
+                DelayNotification.BalloonTipText = DelayNotification.Text;
+                DelayNotification.ShowBalloonTip(100);
+                return;
+            }
+
             HandleDelay(delay);
         }
 
@@ -174,6 +186,9 @@ namespace NMBSTracker
             {
                 XmlNode xmlDepart = xmlConnection.SelectSingleNode("departure");
                 XmlNode xmlArrive = xmlConnection.SelectSingleNode("arrival");
+
+                _canceled = xmlDepart.Attributes["canceled"].InnerText == "1";
+                if (!_canceled) _canceled = xmlArrive.Attributes["canceled"].InnerText == "1";
 
                 string delay = xmlDepart.Attributes["delay"].InnerText;
                 int.TryParse(delay, out intDelay);
