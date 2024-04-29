@@ -39,6 +39,7 @@ namespace NMBSTracker
 
             // Initialize stations
             WebClient client = new WebClient();
+            client.Headers.Add("User-Agent", "C# HttpClient");
             string webStations = client.DownloadString("https://api.irail.be/stations/");
 
             XmlDocument document = new XmlDocument();
@@ -166,6 +167,7 @@ namespace NMBSTracker
             try
             {
                 WebClient client = new WebClient();
+                client.Headers.Add("User-Agent", "C# HttpClient");
                 string apiLink = $"https://api.irail.be/connections/?to={ToStation.Text}&from={FromStation.Text}&time={DepartHour.Text}{DepartMinute.Text}";
                 string webRoutes = client.DownloadString(apiLink);
                 document.LoadXml(webRoutes);
